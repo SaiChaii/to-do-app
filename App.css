@@ -1,0 +1,157 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 1rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+/* Todo List Styles */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-name {
+  font-weight: bold;
+}
+
+.todo-age {
+  font-size: 14px;
+  color: #666;
+}
+
+.remove-btn {
+  background-color: #fff;
+  color: #fd0e0e;
+  border: black;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Add Button Styles */
+.add-btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Input Field Styles */
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px; 
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block; 
+  width: 100px; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.input-field {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Add Button (inside input fields) */
+.add-btn-inside {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px; 
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block; 
+  width: 100px; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
