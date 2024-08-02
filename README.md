@@ -1,3 +1,14 @@
+In this project i have developed a to-do app in a basic way 
+1. It contains to - do things that can be deleted 
+2. We can add things to the to - do list
+Key technologies used in this are mulitple useState() hooks , JSX etc..
+The landing page will appear like
+![image](https://github.com/user-attachments/assets/5d5c28f1-6da8-4b92-964e-9c02daa56087)
+
+Here the remove element is at the right side 
+and the add element is at the below so we can add and remove things 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
