@@ -84,12 +84,13 @@ body {
 }
 
 .todo-name {
-  font-weight: bold;
+  width: calc(33vw);
 }
 
 .todo-age {
   font-size: 14px;
   color: #666;
+  width: calc(33vw);
 }
 
 .remove-btn {
@@ -102,7 +103,7 @@ body {
 
 /* Add Button Styles */
 .add-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -116,13 +117,13 @@ body {
   flex-direction: column;
   margin-top: 20px;
   padding: 10px 20px;
-  font-size: 16px; 
+  font-size: 16px;
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  display: block; 
-  width: 100px; 
-  margin-left: auto; 
+  display: block;
+  width: 100px;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -134,16 +135,16 @@ body {
 
 /* Add Button (inside input fields) */
 .add-btn-inside {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;
-  font-size: 16px; 
+  font-size: 16px;
   border: none;
   cursor: pointer;
   margin-top: 20px;
-  display: block; 
-  width: 100px; 
-  margin-left: auto; 
+  display: block;
+  width: 100px;
+  margin-left: auto;
   margin-right: auto;
 }
 
