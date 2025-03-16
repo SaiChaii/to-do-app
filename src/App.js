@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useMemo } from "react";
 import { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
@@ -23,20 +23,13 @@ function App() {
     console.log(data, "data");
   }, []);
 
-  const remove = (item) => {
-    // console.log(id)
-    if (data.length > 1) {
-      const newArr = data.filter((i) => i !== item);
-
-      setData(newArr);
-    } else if (data.length == 1) {
-      const newArr = data.filter((i) => i !== item);
-      setData(newArr);
-      alert("last item !");
-    } else {
-      const newArr = data.concat({ Name: "lastguy", Age: "100" });
-      setData(newArr);
-    }
+  const remove = async (item) => {
+    console.log(item, "item");
+    const response = await axios.delete(
+      `http://localhost:8080/employee/${item.id}`
+    );
+    const employeeRecord = await axios.get("http://localhost:8080/all");
+    setData(employeeRecord?.data);
   };
 
   const edit = (item) => {};
@@ -45,6 +38,68 @@ function App() {
     const arr2 = data.concat({ fName: firstName, lName: lastName, Age: age });
     setData(arr2);
   };
+
+  const formFunction = useMemo(() => {
+    return data?.map((item, id) => (
+      <div key={id} className="todo-item">
+        <div
+          className="todo-name"
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {item.fName}
+        </div>
+        <div
+          className="todo-name"
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {item.lName}
+        </div>
+        <div
+          className="todo-age"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "start",
+          }}
+        >
+          {item?.age}
+        </div>
+        <button
+          onClick={() => edit(item)}
+          className="remove-btn"
+          style={{
+            justifyContent: "flex-end",
+          }}
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => remove(item)}
+          className="remove-btn"
+          style={{
+            justifyContent: "flex-end",
+          }}
+        >
+          Delete
+        </button>
+        <button
+          className="remove-btn"
+          style={{
+            justifyContent: "flex-end",
+          }}
+        >
+          View
+        </button>
+      </div>
+    ));
+  }, [data]);
+
   return (
     <div>
       {
@@ -119,7 +174,7 @@ function App() {
             Actions
           </div>
         </div>
-        {data.map((item, id) => {
+        {/* {data?.map((item, id) => {
           return (
             <div key={id} className="todo-item">
               <div
@@ -179,7 +234,8 @@ function App() {
               </button>
             </div>
           );
-        })}
+        })} */}
+        {true && formFunction}
       </div>
       <br />
       {showForm && (
