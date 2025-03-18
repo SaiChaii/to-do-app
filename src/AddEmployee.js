@@ -1,5 +1,8 @@
 import axios from "axios";
+import { House } from "phosphor-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddEmployee = () => {
   const [firstName, setFirstName] = useState("");
@@ -9,6 +12,56 @@ const AddEmployee = () => {
   const [phone, setPhone] = useState(0);
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const warn = () =>
+    toast.warn("Enter all the mandatory feilds", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
+
+  const success = () =>
+    toast.success("Employee added successfully !", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+    });
+
+  const fail = () =>
+    toast.error("Employee with this emailId already exists", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      // transition: Bounce,
+      style: {
+        width: "auto", // Dynamic width
+        maxWidth: "500px", // Limit maximum width
+        whiteSpace: "normal", // Allow text wrapping
+        wordWrap: "break-word", // Ensure long words break properly
+        overflow: "hidden", // Prevent content overflow
+        textOverflow: "ellipsis", // Add ellipsis for very long content
+        padding: "12px 20px",
+      },
+    });
+
   const inputContainerStyle = {
     display: "flex",
     alignItems: "center",
@@ -38,18 +91,28 @@ const AddEmployee = () => {
         lName: lastName,
         age: age,
         phone: phone,
+        emailId: emailId,
         image: image,
       });
+      success();
+      setIsSuccess(true);
       console.log(response, "response");
     } catch {
+      fail();
       setError("Please enter a different emailId");
     }
     // if(response)
   };
 
   const AddEmployee = () => {
-    if (firstName === "" || lastName === "" || phone === 0 || emailId === "") {
-      setError("Enter enter all the mandatory fields");
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      phone === 0 ||
+      emailId === "" ||
+      age === 0
+    ) {
+      warn();
     } else {
       setError("");
       add();
@@ -159,9 +222,40 @@ const AddEmployee = () => {
               style={inputStyle}
             />
           </div>
-          <button onClick={() => AddEmployee()} className="add-btn-inside">
-            submit
-          </button>
+          {!true ? (
+            <button onClick={() => AddEmployee()} className="add-btn-inside">
+              submit
+            </button>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "30px",
+              }}
+            >
+              <button
+                className="new-button-inside"
+                onClick={() => navigate("/add")}
+              >
+                Add another Employee
+              </button>
+              <button
+                className="home-button-inside"
+                onClick={() => navigate("/")}
+                style={{
+                  margin: "0 auto",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <House size={18} />
+                Go to home
+              </button>
+            </div>
+          )}
+          <ToastContainer />
         </div>
       </div>
     </div>
